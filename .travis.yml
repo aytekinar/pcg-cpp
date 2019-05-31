@@ -10,6 +10,8 @@ matrix:
           packages: valgrind
       script:
         - ctest --verbose --output-on-failure --script cmake/ctest-gcc.cmake
+      after_script:
+        - bash <(curl -s https://codecov.io/bash) -G build-test-gcc/test-high/CMakeFiles
       before_deploy:
         - mkdir build
         - cd build
